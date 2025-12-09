@@ -6,7 +6,7 @@ export const dishRouter = createTRPCRouter({
   .input(z.object({
     name: z.string(),
     image: z.string(),
-    description:z.string().optional(),
+    description:z.string().min(1, "Description is required"),
     spiceLevel:z.number().optional(),
     restaurantId: z.string(),
     categoryIds: z.array(z.string()),
