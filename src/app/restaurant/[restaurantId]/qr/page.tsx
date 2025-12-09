@@ -9,7 +9,8 @@ export default function RestaurantQR(){
   const router = useRouter();
 
   const {restaurantId} = useParams();
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/menu/${restaurantId}`;
+  const baseUrl =   process.env.NEXT_PUBLIC_BASE_URL ?? (typeof window !== "undefined" ? window.location.origin : "");
+  const url = `${baseUrl}/menu/${restaurantId}`;
   return(
     <div className="p-6 flex flex-col items-center">
       {/* Back Button */}
