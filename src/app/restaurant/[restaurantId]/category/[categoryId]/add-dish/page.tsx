@@ -68,7 +68,7 @@ export default function AddDish() {
 
         <textarea
           name="description"
-          placeholder="Description (optional)"
+          placeholder="Description (required)"
           className="border p-2"
           value={form.description}
           onChange={handleChange}
