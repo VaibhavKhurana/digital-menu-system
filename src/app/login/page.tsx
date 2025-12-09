@@ -7,8 +7,9 @@ export default function LoginPage(){
   const router = useRouter();
   const [email,setEmail] = useState("");
   const sendOTP = api.auth.sendOTP.useMutation({
-    onSuccess:()=>{
+    onSuccess:(data)=>{
       router.push(`/verify?email=${email}`)
+      console.log("Test OTP: ",data.otp);
     },
   });
 

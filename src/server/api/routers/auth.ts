@@ -28,7 +28,7 @@ export const authRouter = createTRPCRouter({
       </div>
     `,
     });
-    return {success:true};
+    return {success:true,otp:code};
   }),
   verifyOTP:publicProcedure.input(z.object({
     email:z.string().email(),
