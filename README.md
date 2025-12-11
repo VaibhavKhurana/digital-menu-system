@@ -1,29 +1,93 @@
-# Create T3 App
+Digital Menu System – OTP Authentication Flow
+🚀 Live Deployment
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Production URL: https://your-vercel-domain.vercel.app
 
-## What's next? How do I make an app with this?
+(Ensure this deployment is public and not behind Vercel Authentication.)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+📌 Overview
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+This project implements a secure OTP-based authentication system using Next.js (App Router), tRPC, Prisma, Resend for emails, and Vercel.
+The focus of the assignment was to design a clean login and verification flow with OTP delivery and verification using hashed OTPs stored in the database.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+The application includes:
 
-## Learn More
+1.Email-based login
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+2.OTP generation using secure random codes (Currently to obtain OTP please check the console.log as for email, we had no domain to link to but it is integrated)
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+3.OTP hashing using bcrypt
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+4.Cookie-based session auth
 
-## How do I deploy this?
+5.Server actions for secure cookie management
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+6.Protected dashboard page
+
+7.Vercel-ready deployment
+
+Approach & Architecture Key Decisions
+
+1.Used tRPC for type-safe request handling and server logic.
+
+2.Created a dedicated OTP table with hashed OTP and expiry timestamps.
+
+3.Used bcrypt.hash() to securely store OTP instead of plaintext.
+
+4.Used Resend for sending verification emails.
+
+5.Used Next.js Server Actions to set encrypted httpOnly cookies.
+
+6.Separated Client and Server Components to avoid Suspense + prerendering errors.
+
+7.Handled OTP expiry to avoid invalid login attempts.
+
+High-Level Flow:
+Step	User Action	System Action
+1	User enters email	Generate & hash OTP → Save in DB → Email OTP
+2	User enters OTP	Validate code → Set secure cookie
+3	User accesses dashboard	Cookie-based authentication
+
+IDE Used: Visual Studio Code (VS Code)
+
+AI Tools and Models Used: ChatGPT (GPT-5.1)/GitHub Copilot (light usage)
+
+Prompts Used with AI Tools :- 
+
+Some examples of prompts used:
+
+“Fix Suspense error: useSearchParams() should be wrapped in a suspense boundary.”
+
+“Refactor my login and verify pages to avoid server/client rendering conflicts and smooth scalability.”
+
+Helpfulness of AI Tools
+
+AI was extremely helpful for:
+
+Debugging cookie behavior in production vs. local.
+
+Mistakes the AI made (which I corrected):
+
+Suggested importing Client Component inside a Server Component incorrectly.
+
+Some syntax and syntactical errors. 
+
+🧩 Edge Cases Handled
+
+These were not explicitly mentioned in the assignment but were implemented:
+OTP Expiry: Rejecting OTPs older than 5 minutes.
+Multiple OTP Requests: Generating new OTP invalidates the old one automatically.
+Incorrect OTP: Safe error message without revealing specific failure details.
+Email validation via Zod.
+
+Would add:
+
+Proper image storage
+Logging & Monitoring
+Resend Email Preview in Production
+
+
+📄 Summary
+
+This project demonstrates a secure, modern implementation of OTP-based authentication using Next.js App Router, server actions, Prisma, and Vercel.
+A clean architecture was followed, with careful separation of client/server logic and production-ready cookie handling.
