@@ -1,7 +1,7 @@
 Digital Menu System – OTP Authentication Flow
 🚀 Live Deployment
 
-Production URL: [https://your-vercel-domain.vercel.app](https://digital-menu-system-git-master-vaibhavs-projects-8bda4f52.vercel.app?_vercel_share=RD52ioLJWo4xYbVA2tQaze4lEV3PErCJ)
+Production URL: https://digital-menu-system-git-master-vaibhavs-projects-8bda4f52.vercel.app?_vercel_share=RD52ioLJWo4xYbVA2tQaze4lEV3PErCJ
 
 📌 Overview
 
