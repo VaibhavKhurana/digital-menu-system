@@ -1,9 +1,7 @@
 Digital Menu System – OTP Authentication Flow
 🚀 Live Deployment
 
-Production URL: https://your-vercel-domain.vercel.app
-
-(Ensure this deployment is public and not behind Vercel Authentication.)
+Production URL: [https://your-vercel-domain.vercel.app](https://digital-menu-system-git-master-vaibhavs-projects-8bda4f52.vercel.app?_vercel_share=RD52ioLJWo4xYbVA2tQaze4lEV3PErCJ)
 
 📌 Overview
 
@@ -12,7 +10,7 @@ The focus of the assignment was to design a clean login and verification flow wi
 
 The application includes:
 
-1.Email-based login
+1.Email-based login (for testing use s@g.com)
 
 2.OTP generation using secure random codes (Currently to obtain OTP please check the console.log as for email, we had no domain to link to but it is integrated)
 
